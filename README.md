@@ -1,0 +1,2 @@
+# ChatFilterIndo
+Menyensor kata kasar
