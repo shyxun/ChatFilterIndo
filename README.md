@@ -5,5 +5,5 @@ Yang sudah diperbaiki:
 - Kata yang memiliki karakter unik.
 - Teks yang memiliki kalimat kasar berulang.
 
-![image](https://user-images.githubusercontent.com/79041906/226370895-dd7b4973-ff9c-4b09-98c3-f9ebe9d2700b.png)
+![image](https://user-images.githubusercontent.com/79041906/226381457-89126f1a-4f04-4b63-abf1-914692c671da.png)
 
