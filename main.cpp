@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <map>
@@ -33,48 +33,6 @@ public:
 		{"4", "a"}
 	};
 };
-
-string censor(string text,
-	string word)
-{
-
-	// Break down sentence by ' ' spaces
-	// and store each individual word in
-	// a different list
-	vector<string> word_list;
-
-	// A new string to store the result
-	string result = "";
-
-	// Creating the censor which is an asterisks
-	// "*" text of the length of censor word
-	string stars = "";
-	for (int i = 0; i < word.size(); i++)
-		stars += '*';
-
-	// Iterating through our list
-	// of extracted words
-	int index = 0;
-	for (string i : word_list)
-	{
-
-		if (i.compare(word) == 0)
-		{
-
-			// changing the censored word to
-			// created asterisks censor
-			word_list[index] = stars;
-		}
-		index++;
-	}
-
-	// join the words
-	for (string i : word_list)
-	{
-		result += i + ' ';
-	}
-	return result;
-}
 
 int main()
 {
