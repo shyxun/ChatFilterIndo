@@ -1,2 +1,2 @@
 # ChatFilterIndo
-Menyensor kata kasar
+Tujuannya untuk menyensor kata kasar. Me-bypass penggunaan specialized character. 
