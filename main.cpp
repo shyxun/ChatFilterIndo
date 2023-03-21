@@ -45,7 +45,7 @@ public:
 	};
 };
 
-string olah_teks(string input, Data* data)
+string olah_teks(const string input, Data* data)
 {
 	// membuat dummy, untuk mengolah teks yang untuk difilter.
 	string hasil = input, dummy = input;
@@ -56,10 +56,10 @@ string olah_teks(string input, Data* data)
 	// Melakukan cek jika kita menggunakan huruf spesial.
 	// 
 	// kita 'kutip' semua huruf spesial.
-	for (auto i = data->huruf_spesial.begin(); i != data->huruf_spesial.end(); i++)
+	for (auto& it : data->huruf_spesial)
 	{
 		// cari posisi teks yang akan kita ubah.
-		size_t posisi = dummy.find(i->first);
+		size_t posisi = dummy.find(it.first);
 
 		// mencari teks yang ada karakter spesial-nya.
 		while (posisi != string::npos)
@@ -68,10 +68,10 @@ string olah_teks(string input, Data* data)
 			// argumen pertama berisi huruf yang akan kita cari, yaitu i->first, i->first adalah isi dari huruf_spesial yang dalam baris pertama.
 			// argumen kedua adalah panjangnya teks yang kita cari.
 			// argumen ketiga mengubah huruf spesial menjadi huruf normal.
-			dummy.replace(dummy.find(i->first), i->first.length(), i->second);
+			dummy.replace(dummy.find(it.first), it.first.length(), it.second);
 
 			// Ubah posisi untuk menemukan karakter spesial selanjutnya.
-			posisi = dummy.find(i->first, posisi + 1);
+			posisi = dummy.find(it.first, posisi + 1);
 		}
 	}
 
@@ -111,13 +111,13 @@ int main()
 	// Informasi-informasi yang diperlukan.
 	
 	// Tahapan awal.
-	cout << "\x1B[31mKetik kata kasar dalam Bahasa Indonesia:\n";
+	cout << "\x1B[31mKetik kata kasar dalam Bahasa Indonesia:" << endl;
 	getline(cin, data->input_masuk);
 
 	// Melakukan pengolahan dari teks yang telah di-input.
-	cout << "\n\x1B[36mKata kasar yang telah di-sensor:\n";
-	cout << olah_teks(data->input_masuk, data) << ("\x1B[37m \n");;
-	cout << "\nApakah terdapat kata kasar: " << (data->mengandung_kata_kasar ? "ya, " : "tidak ") << (data->mengandung_kata_kasar ? (string("sebanyak: " + to_string(data->jumlah_kata_kasar))) : "") << "\n";
+	cout << endl << "\x1B[36mKata kasar yang telah di-sensor:" << endl;
+	cout << olah_teks(data->input_masuk, data) << ("\x1b[0m") << endl;
+	cout << endl << "Apakah terdapat kata kasar: " << (data->mengandung_kata_kasar ? "ya, " : "tidak ") << (data->mengandung_kata_kasar ? (string("sebanyak: " + to_string(data->jumlah_kata_kasar))) : "") << endl;
 
 	// Menghapus "data" untuk menghindari memory leak.
 	delete data;
